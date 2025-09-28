@@ -1,5 +1,8 @@
 import numpy as np
 from scipy.integrate import solve_ivp
+import matplotlib
+# Try using Qt5Agg backend
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 
 # Chaos model (Lorenz attractor as neural proxy)
@@ -50,5 +53,17 @@ plt.title('Distribution of X values')
 plt.xlabel('X value')
 plt.ylabel('Density')
 
+# Make the figure larger
+plt.gcf().set_size_inches(14, 6)
 plt.tight_layout()
-plt.show()
+
+# Add a main title
+plt.suptitle('Lorenz System Analysis', fontsize=16)
+
+# Save the figure to a file
+output_file = 'lorenz_analysis.png'
+plt.savefig(output_file, dpi=300, bbox_inches='tight')
+print(f"Plot saved as {output_file}")
+
+# Close the figure to free memory
+plt.close()
